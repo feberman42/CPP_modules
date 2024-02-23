@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 17:01:40 by feberman          #+#    #+#             */
-/*   Updated: 2024/02/23 15:39:23 by feberman         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:18:54 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,41 @@ PhoneBook::~PhoneBook(void)
 	return;
 }
 
-Contact	*PhoneBook::get_active_contact(void)
+void	PhoneBook::new_entry(void)
 {
-	Contact	*c;
+	std::string	buf;
 
-	c = &this->contacts[this->active];
+	std::cout << "First name: ";
+	std::cin >> buf;
+	this->contacts[this->active].first_name.assign(buf);
+	std::cout << "Last name: ";
+	std::cin >> buf;
+	this->contacts[this->active].last_name.assign(buf);
+	std::cout << "Nick name: ";
+	std::cin >> buf;
+	this->contacts[this->active].nick_name.assign(buf);
+	std::cout << "Phone number: ";
+	std::cin >> buf;
+	this->contacts[this->active].phone_number.assign(buf);
+	std::cout << "Darkest secret: ";
+	std::cin >> buf;
+	this->contacts[this->active].secret.assign(buf);
 	this->active++;
 	if (this->active == 8)
 		this->active = 0;
-	return (c);
 }
 
 std::ostream	&operator<<(std::ostream &os, PhoneBook const &c)
 {
-	(void)c;
-	os << "PhoneBook print called." << std::endl;
+	c.print_contacts();
 	return (os);
+}
+
+void	PhoneBook::print_contacts(void) const
+{
+	int	i;
+
+	i = 0;
+	while (i < 8)
+		std::cout << this->contacts[i++] << std::endl;
 }

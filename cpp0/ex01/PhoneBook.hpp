@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 17:01:29 by feberman          #+#    #+#             */
-/*   Updated: 2024/02/23 15:32:18 by feberman         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:14:19 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ class PhoneBook
 		PhoneBook(void);
 		~PhoneBook(void);
 		
-		Contact	*get_active_contact(void);
+		void	new_entry(void);
+		void	print_contacts(void) const;
 		
 	private:
 		Contact	contacts[8];
