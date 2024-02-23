@@ -6,7 +6,7 @@
 #    By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:30:52 by feberman          #+#    #+#              #
-#    Updated: 2024/02/22 17:01:15 by feberman         ###   ########.fr        #
+#    Updated: 2024/02/23 14:52:02 by feberman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SHELL= 		/bin/bash
 
 OBJD=		objects/
 
-SRCs= 		
+SRCs= 		PhoneBook.cpp Contact.cpp main.cpp
 OBJs=		$(addprefix $(OBJD), $(SRCs:.cpp=.o))
 
 all: $(NAME)
