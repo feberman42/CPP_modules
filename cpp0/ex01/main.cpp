@@ -6,32 +6,29 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 17:02:11 by feberman          #+#    #+#             */
-/*   Updated: 2024/02/23 15:56:45 by feberman         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:48:39 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
+#include <limits>
 
 int	main(void)
 {
-	// PhoneBook 	pb;
+	PhoneBook 	pb;
 	std::string	buf;
 
 	while (true)
 	{
 		std::cout << "> ";
 		std::cin >> buf;
-		if (buf.compare("EXIT") == 0)
+		if (buf.compare("EXIT") == 0 || std::cin.eof())
 			return (0);
 		else if (buf.compare("ADD") == 0)
-		{
-			//add new contact
-		}
+			pb.new_entry();
 		else if (buf.compare("SEARCH") == 0)
-		{
-			//search
-		}
+			std::cout << pb << std::endl;
 		else
 		{
 			std::cout << "Command not found." << std::endl;
