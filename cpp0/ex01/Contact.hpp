@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 17:01:56 by feberman          #+#    #+#             */
-/*   Updated: 2024/02/23 15:22:19 by feberman         ###   ########.fr       */
+/*   Updated: 2024/02/23 15:48:12 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ class Contact
 	public:
 		Contact(void);
 		~Contact(void);
-		
 		
 		std::string	first_name;
 		std::string	last_name;
