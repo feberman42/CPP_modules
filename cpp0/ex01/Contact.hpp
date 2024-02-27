@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 17:01:56 by feberman          #+#    #+#             */
-/*   Updated: 2024/02/23 15:48:12 by feberman         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:12:32 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ class Contact
 		Contact(void);
 		~Contact(void);
 		
+		std::string	get_first_name(void) const;
+		std::string	get_last_name(void) const;
+		std::string	get_nick_name(void) const;
+		std::string	get_phone_number(void) const;
+		std::string	get_secret(void) const;
+
+		void		set_first_name(std::string const str);
+		void		set_last_name(std::string const str);
+		void		set_nick_name(std::string const str);
+		void		set_phone_number(std::string const str);
+		void		set_secret(std::string const str);
+
+
+	private:
 		std::string	first_name;
 		std::string	last_name;
 		std::string	nick_name;
