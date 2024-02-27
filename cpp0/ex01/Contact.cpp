@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 17:02:04 by feberman          #+#    #+#             */
-/*   Updated: 2024/02/23 15:50:30 by feberman         ###   ########.fr       */
+/*   Updated: 2024/02/25 12:55:33 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ Contact::~Contact(void)
 		
 std::ostream	&operator<<(std::ostream &os, Contact const &c)
 {
-	(void)c;
 	os << "First name: " << c.first_name << std::endl;
 	os << "Last name: " << c.last_name << std::endl;
 	os << "Nick name: " << c.nick_name << std::endl;

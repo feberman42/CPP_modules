@@ -1,41 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   utils.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 17:01:29 by feberman          #+#    #+#             */
-/*   Updated: 2024/02/25 12:52:01 by feberman         ###   ########.fr       */
+/*   Created: 2024/02/24 11:53:01 by feberman          #+#    #+#             */
+/*   Updated: 2024/02/24 12:39:16 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef UTILS_HPP
+# define UTILS_HPP
 
-# include <string>
 # include <iostream>
-# include <iomanip>
-# include "Contact.hpp"
+# include <string>
+# include <cstdlib>
 
-class PhoneBook
-{
-	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-		
-		void	new_entry(void);
-		void	print_contacts(void) const;
-		void	print_contact(int index) const;
-		
-	private:
-		Contact	contacts[8];
-		int		active;
-
-		void	next_entry(void);
-
-};
-
-std::ostream	&operator<<(std::ostream &os, PhoneBook const &c);
+std::string	get_input(const char *prompt);
+std::string	truncate(const std::string str, long unsigned int width, const char *terminator);
 
 #endif
