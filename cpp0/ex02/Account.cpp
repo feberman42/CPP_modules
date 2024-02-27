@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:29:04 by feberman          #+#    #+#             */
-/*   Updated: 2024/02/27 11:37:36 by feberman         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:09:54 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,12 @@ void	Account::_displayTimestamp( void )
 	now_t = time(NULL);
 	now = localtime(&now_t);
 	std::cout << "[" << (now->tm_year + 1900);
-	std::cout << std::setw(2) << std::setfill('0')
-		<< (now->tm_mon + 1) << now->tm_mday;
+	std::cout << std::setw(2) << std::setfill('0') << (now->tm_mon + 1);
+	std::cout << std::setw(2) << std::setfill('0') << now->tm_mday;
 	std::cout << "_";
-	std::cout << std::setw(2) << std::setfill('0') 
-		<< now->tm_hour << now->tm_min << now->tm_sec << "] ";
+	std::cout << std::setw(2) << std::setfill('0') << now->tm_hour;
+	std::cout << std::setw(2) << std::setfill('0') << now->tm_min;
+	std::cout << std::setw(2) << std::setfill('0') << now->tm_sec << "] ";
 	return ;
 }
 
