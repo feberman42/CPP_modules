@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 15:40:45 by feberman          #+#    #+#             */
-/*   Updated: 2024/02/29 10:39:53 by feberman         ###   ########.fr       */
+/*   Created: 2024/02/29 10:16:36 by feberman          #+#    #+#             */
+/*   Updated: 2024/02/29 10:39:00 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include "HumanA.hpp"
 
-Weapon::Weapon(void)
+HumanA::HumanA(std::string name, Weapon &weapon):
+_name(name), _weapon(weapon)
 {
-	//std::cout << "Weapon was created" << std::endl;
+	// std::cout << "HumanA was created with " << weapon.get_type() << std::endl;
 	return ;
 }
 
-Weapon::Weapon(std::string type): _type(type)
+HumanA::~HumanA(void)
 {
-	//std::cout << "Weapon was created" << std::endl;
+	//std::cout << "HumanA was destroyed" << std::endl;
 	return ;
 }
 
-Weapon::~Weapon(void)
+void	HumanA::attack(void) const
 {
-	//std::cout << "Weapon was destroyed" << std::endl;
-	return ;
-}
-
-std::string const	&Weapon::getType(void) const
-{
-	return (this->_type);
-}
-void	Weapon::setType(std::string type)
-{
-	this->_type.assign(type);
-	return ;
+	std::cout << this->_name << " attacks with their "
+		<< this->_weapon.getType() << std::endl;
 }

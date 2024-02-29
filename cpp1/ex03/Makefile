@@ -6,7 +6,7 @@
 #    By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:30:52 by feberman          #+#    #+#              #
-#    Updated: 2024/02/28 15:40:16 by feberman         ###   ########.fr        #
+#    Updated: 2024/02/29 10:39:27 by feberman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SHELL= 		/bin/bash
 
 OBJD=		objects/
 
-SRCs= 		main.cpp
+SRCs= 		main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJs=		$(addprefix $(OBJD), $(SRCs:.cpp=.o))
 
 all: $(NAME)
