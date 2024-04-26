@@ -15,8 +15,8 @@ Fixed::Fixed(const Fixed &ref)
 
 Fixed	&Fixed::operator=(const Fixed &rhs)
 {
-	std::cout << "Fixed was created with copy assignment operator" << std::endl;
-	this->setRawBits(rhs.getRawBits());
+	std::cout << "Copy assignment operator called" << std::endl;
+	this->value = rhs.getRawBits();
 	return *this;
 }
 
