@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 11:46:26 by feberman          #+#    #+#             */
-/*   Updated: 2024/04/30 12:01:09 by feberman         ###   ########.fr       */
+/*   Updated: 2024/04/30 13:21:57 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ class Point
 		Point(const Point &ref);
 		Point	&operator=(const Point &rhs);
 		~Point(void);
+
+		const Fixed	&get_x(void) const;
+		const Fixed	&get_y(void) const;
 
 	private:
 		const Fixed	_x;

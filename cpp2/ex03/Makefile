@@ -6,7 +6,7 @@
 #    By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:30:52 by feberman          #+#    #+#              #
-#    Updated: 2024/04/24 14:28:08 by feberman         ###   ########.fr        #
+#    Updated: 2024/04/30 13:48:09 by feberman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ SHELL= 		/bin/bash
 
 OBJD=		objects/
 
-SRCs= 		main.cpp Fixed.cpp
-HEADERS=	Fixed.hpp
+SRCs= 		main.cpp Fixed.cpp Point.cpp bsp.cpp
+HEADERS=	Fixed.hpp Point.hpp bsp.hpp
 OBJs=		$(addprefix $(OBJD), $(SRCs:.cpp=.o))
 
 all: $(NAME)
