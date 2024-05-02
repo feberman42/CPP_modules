@@ -5,41 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/02 16:03:31 by feberman          #+#    #+#             */
-/*   Updated: 2024/05/02 18:18:47 by feberman         ###   ########.fr       */
+/*   Created: 2024/05/02 18:51:02 by feberman          #+#    #+#             */
+/*   Updated: 2024/05/02 19:13:46 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int	main(void)
 {
-	ClapTrap freddy("Freddy");
-	ClapTrap frodo("Frodo");
+	ScavTrap freddy("Freddy");
 
-	std::cout << std::endl;
 	freddy.print(std::cout);
-	freddy.attack("Bruno");
-	freddy.takeDamage(9);
-	freddy.beRepaired(2);
-	freddy.beRepaired(2);
-	freddy.beRepaired(2);
-	freddy.takeDamage(23);
-	freddy.attack("the Overlord");
+	freddy.attack("Pupsi");
+	freddy.guardGate();
+	freddy.takeDamage(120);
+	freddy.beRepaired(3);
+	freddy.guardGate();
 	freddy.print(std::cout);
-	std::cout << std::endl;
 
-	frodo.attack("Freddy");
-	frodo.attack("Freddy");
-	frodo.attack("Freddy");
-	frodo.attack("Freddy");
-	frodo.attack("Freddy");
-	frodo.attack("Freddy");
-	frodo.attack("Freddy");
-	frodo.attack("Freddy");
-	frodo.attack("Freddy");
-	frodo.attack("Freddy");
-	frodo.attack("Freddy");
-	frodo.attack("Freddy");
 	return (0);
 }
