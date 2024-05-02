@@ -6,7 +6,7 @@
 #    By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:30:52 by feberman          #+#    #+#              #
-#    Updated: 2024/05/02 12:32:40 by feberman         ###   ########.fr        #
+#    Updated: 2024/05/02 16:05:24 by feberman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ SHELL= 		/bin/bash
 
 OBJD=		objects/
 
-SRCs= 		main.cpp
-HEADERS=	
+SRCs= 		main.cpp ClapTrap.cpp
+HEADERS=	ClapTrap.hpp
 OBJs=		$(addprefix $(OBJD), $(SRCs:.cpp=.o))
 
 all: $(NAME)

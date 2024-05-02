@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:36:10 by feberman          #+#    #+#             */
-/*   Updated: 2024/05/02 13:01:08 by feberman         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:16:22 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ ClapTrap::ClapTrap(const ClapTrap &ref)
 ClapTrap	&ClapTrap::operator=(const ClapTrap &rhs)
 {
 	//std::cout << "copy assignment operator called on ClapTrap" << std::endl;
+	this->_name.assign(rhs._name);
+	this->_hitPoints = rhs._hitPoints;
+	this->_energyPoints = rhs._energyPoints;
+	this->_attackDamage = rhs._attackDamage;
 	return *this;
 }
 
@@ -49,20 +53,44 @@ ClapTrap::~ClapTrap(void)
 
 void	ClapTrap::attack(const std::string &target)
 {
-	if (this->_hitPoints <= 0)
-		std::cout
-	std::cout << this->_name << " attacks " << target << ", causing " << \
-		this->_attackDamage << " points of damage!" << std::endl;
+	if (this->_hitPoints == 0)
+		std::cout << this->_name << " cannot attack, because it's dead." << std::endl;
+	else if (this->_energyPoints == 0)
+		std::cout << this->_name << " doesn't have energy to attack." << std::endl;
+	else
+	{
+		std::cout << this->_name << " attacks " << target << ", causing " << \
+			this->_attackDamage << " points of damage!" << std::endl;
+		this->_energyPoints--;
+	}
+	return ;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-
+	if (amount >= this->_hitPoints)
+		this->_hitPoints = 0;
+	else
+		this->_hitPoints -= amount;
+	std::cout << this->_name << " took " << amount << " damage." << std::endl;
+	if (this->_hitPoints == 0)
+		std::cout << this->_name << " died." << std::endl;
+	return ;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-
+	if (this->_hitPoints == 0)
+		std::cout << this->_name << " cannot repair itself, because it's dead." << std::endl;
+	else if (this->_energyPoints == 0)
+		std::cout << this->_name << " doesn't have energy to repair itself." << std::endl;
+	else
+	{
+		this->_hitPoints += amount;
+		std::cout << this->_name << " repaired itself for " << amount << " hitpoints." << std::endl;
+		this->_energyPoints--;
+	}
+	return ;
 }
 
 void	ClapTrap::print(std::ostream &os) const
@@ -71,7 +99,6 @@ void	ClapTrap::print(std::ostream &os) const
 	os << "HP: " << this->_hitPoints << std::endl;
 	os << "EP: " << this->_energyPoints << std::endl;
 	os << "AD: " << this->_attackDamage << std::endl;
-
 }
 
 std::ostream	&operator<<(std::ostream &os, ClapTrap const &c)
