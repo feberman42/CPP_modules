@@ -24,7 +24,7 @@ Fixed::Fixed(const int value)
 Fixed::Fixed(const float value)
 {
 	std::cout << "Fixed was created with float contructor" << std::endl;
-	this->_value = round(value * (1 << Fixed::_fractionalBits));
+	this->_value = roundf(value * (1 << Fixed::_fractionalBits));
 	return ;
 }
 

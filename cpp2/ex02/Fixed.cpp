@@ -24,7 +24,7 @@ Fixed::Fixed(const int value)
 Fixed::Fixed(const float value)
 {
 	// std::cout << "Fixed was created with float contructor" << std::endl;
-	this->_value = round(value * (1 << Fixed::_fractionalBits));
+	this->_value = roundf(value * (1 << Fixed::_fractionalBits));
 	return ;
 }
 
@@ -35,32 +35,32 @@ Fixed	&Fixed::operator=(const Fixed &rhs)
 	return *this;
 }
 
-bool	Fixed::operator>(const Fixed &rhs)
+bool	Fixed::operator>(const Fixed &rhs) const
 {
 	return (this->_value > rhs._value);
 }
 
-bool	Fixed::operator<(const Fixed &rhs)
+bool	Fixed::operator<(const Fixed &rhs) const
 {
 	return (this->_value < rhs._value);
 }
 
-bool	Fixed::operator>=(const Fixed &rhs)
+bool	Fixed::operator>=(const Fixed &rhs) const
 {
 	return (this->_value >= rhs._value);
 }
 
-bool	Fixed::operator<=(const Fixed &rhs)
+bool	Fixed::operator<=(const Fixed &rhs) const
 {
 	return (this->_value <= rhs._value);
 }
 
-bool	Fixed::operator==(const Fixed &rhs)
+bool	Fixed::operator==(const Fixed &rhs) const
 {
 	return (this->_value == rhs._value);
 }
 
-bool	Fixed::operator!=(const Fixed &rhs)
+bool	Fixed::operator!=(const Fixed &rhs) const
 {
 	return (this->_value != rhs._value);
 }
@@ -93,28 +93,30 @@ Fixed	Fixed::operator--(int)
 	return (old);
 }
 
-Fixed	Fixed::operator+(const Fixed &rhs)
+Fixed	Fixed::operator+(const Fixed &rhs) const
 {
-	Fixed	ret(this->_value + rhs._value);
-
+	Fixed	ret;
+	
+	ret._value = (this->_value + rhs._value);
 	return (ret);
 }
 
-Fixed	Fixed::operator-(const Fixed &rhs)
+Fixed	Fixed::operator-(const Fixed &rhs) const
 {
-	Fixed	ret(this->_value - rhs._value);
-
+	Fixed	ret;
+	
+	ret._value = (this->_value - rhs._value);
 	return (ret);
 }
 
-Fixed	Fixed::operator*(const Fixed &rhs)
+Fixed	Fixed::operator*(const Fixed &rhs) const
 {
 	Fixed	ret(this->toFloat() * rhs.toFloat());
 
 	return (ret);
 }
 
-Fixed	Fixed::operator/(const Fixed &rhs)
+Fixed	Fixed::operator/(const Fixed &rhs) const
 {
 	Fixed	ret(this->toFloat() / rhs.toFloat());
 
@@ -159,7 +161,7 @@ Fixed	&Fixed::min(Fixed &a, Fixed &b)
 
 const Fixed	&Fixed::min(const Fixed &a, const Fixed &b)
 {
-	if ((Fixed)a <= b)
+	if (a <= b)
 		return (a);
 	return (b);
 }
@@ -173,7 +175,7 @@ Fixed	&Fixed::max(Fixed &a, Fixed &b)
 
 const Fixed	&Fixed::max(const Fixed &a, const Fixed &b)
 {
-	if ((Fixed)a >= b)
+	if (a >= b)
 		return (a);
 	return (b);
 }

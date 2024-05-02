@@ -24,7 +24,7 @@ Fixed::Fixed(const int value)
 Fixed::Fixed(const float value)
 {
 	// std::cout << "Fixed was created with float contructor" << std::endl;
-	this->_value = round(value * (1 << Fixed::_fractionalBits));
+	this->_value = roundf(value * (1 << Fixed::_fractionalBits));
 	return ;
 }
 
@@ -95,15 +95,17 @@ Fixed	Fixed::operator--(int)
 
 Fixed	Fixed::operator+(const Fixed &rhs) const
 {
-	Fixed	ret(this->_value + rhs._value);
-
+	Fixed	ret;
+	
+	ret._value = (this->_value + rhs._value);
 	return (ret);
 }
 
 Fixed	Fixed::operator-(const Fixed &rhs) const
 {
-	Fixed	ret(this->_value - rhs._value);
-
+	Fixed	ret;
+	
+	ret._value = (this->_value - rhs._value);
 	return (ret);
 }
 

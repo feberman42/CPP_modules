@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 12:07:21 by feberman          #+#    #+#             */
-/*   Updated: 2024/04/30 14:05:48 by feberman         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:15:33 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,8 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point)
 	int	cap;
 
 	abp = side(a, b, point);
-	std::cout << abp << std::endl;
 	bcp = side(b, c, point);
-	std::cout << bcp << std::endl;
 	cap = side(c, a, point);
-	std::cout << cap << std::endl;
 
 	if (abp == bcp && bcp == cap && abp != 0)
 		return (true);
@@ -45,7 +42,6 @@ static int	side(Point const &start, Point const &end, Point const &point)
 	t3 = (point.get_y() - start.get_y());
 	t4 = (end.get_x() - start.get_x());
 	d = ((t1 * t2) - (t3 * t4)).toFloat();
-	std::cout << d << std::endl;
 	if (d == 0)
 		return (0);
 	else if (d < 0)
