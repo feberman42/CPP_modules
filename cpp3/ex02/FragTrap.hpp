@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 21:11:37 by feberman          #+#    #+#             */
-/*   Updated: 2024/05/02 21:13:58 by feberman         ###   ########.fr       */
+/*   Updated: 2024/05/03 09:35:12 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ class FragTrap: public ClapTrap
 		FragTrap(const FragTrap &ref);
 		FragTrap	&operator=(const FragTrap &rhs);
 		~FragTrap(void);
+
+		void	highFive(void);
 
 	private:
 		

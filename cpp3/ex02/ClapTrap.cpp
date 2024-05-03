@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:36:10 by feberman          #+#    #+#             */
-/*   Updated: 2024/05/02 16:16:22 by feberman         ###   ########.fr       */
+/*   Updated: 2024/05/03 09:43:48 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,10 @@ void	ClapTrap::beRepaired(unsigned int amount)
 
 void	ClapTrap::print(std::ostream &os) const
 {
-	os << this->_name << std::endl;
-	os << "HP: " << this->_hitPoints << std::endl;
-	os << "EP: " << this->_energyPoints << std::endl;
-	os << "AD: " << this->_attackDamage << std::endl;
+	os << "\t" << this->_name << std::endl;
+	os << "\tHP: " << this->_hitPoints << std::endl;
+	os << "\tEP: " << this->_energyPoints << std::endl;
+	os << "\tAD: " << this->_attackDamage << std::endl;
 }
 
 std::ostream	&operator<<(std::ostream &os, ClapTrap const &c)
