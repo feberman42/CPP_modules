@@ -6,11 +6,11 @@
 #    By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:30:52 by feberman          #+#    #+#              #
-#    Updated: 2024/05/03 09:41:39 by feberman         ###   ########.fr        #
+#    Updated: 2024/05/03 11:53:56 by feberman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=		clapTrap
+NAME=		fragTrap
 CPP=		c++
 CPPFLAGS=	-Wall -Werror -Wextra -Wshadow -std=c++98
 SHELL= 		/bin/bash
