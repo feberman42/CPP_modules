@@ -6,7 +6,7 @@
 #    By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:30:52 by feberman          #+#    #+#              #
-#    Updated: 2024/05/06 09:55:12 by feberman         ###   ########.fr        #
+#    Updated: 2024/05/06 10:22:53 by feberman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ SHELL= 		/bin/bash
 
 OBJD=		objects/
 
-SRCs= 		main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
-HEADERS=	Animal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp
+SRCs= 		main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
+HEADERS=	Animal.hpp Cat.hpp Dog.hpp Brain.hpp
 OBJs=		$(addprefix $(OBJD), $(SRCs:.cpp=.o))
 
 all: $(NAME)
