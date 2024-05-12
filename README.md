@@ -1,4 +1,4 @@
-# CPP modules of the 42 Core Curriculum
+# CPP modules of the 42 Core Curriculum <img src="https://github.com/devicons/devicon/blob/master/icons/cplusplus/cplusplus-original.svg" title="CPP" alt="CPP Logo" width="55" height="55" align="right">
 
 <b>CPP0:</b> basic syntax, output formatting  
   
