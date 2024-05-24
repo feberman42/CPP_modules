@@ -9,3 +9,5 @@
 <b>CPP3:</b> Inheritance, Diamond problem  
   
 <b>CPP4:</b> Subtype polymorphism, abstract classes, interfaces  
+
+<b>CPP5:</b> Exceptions  
