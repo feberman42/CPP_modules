@@ -26,6 +26,7 @@ class AForm
 		virtual ~AForm(void);
 
 		const std::string	&getName(void) const;
+		const std::string	&getTarget(void) const;
 		bool				getSigned(void) const;
 		int					getSignGrade(void) const;
 		int					getExecGrade(void) const;
@@ -34,10 +35,21 @@ class AForm
 		virtual void	execute(Bureaucrat const &executor) const = 0;
 
 	protected:
+		std::string			_target;
 		void				checkExecute(int grade) const;
+
 		class GradeTooHightException: public std::exception {};
 		class GradeTooLowException: public std::exception {};
-		class FormNotSigned: public std::exception {};
+		class FormNotSigned: public std::exception
+		{
+			public:
+				FormNotSigned(const AForm &form);
+				~FormNotSigned(void) throw();
+				const char	*what(void) const throw();
+			private:
+				const AForm	&_form;
+				std::string	msg;
+		};
 
 	private:
 		AForm(void);
@@ -48,7 +60,6 @@ class AForm
 		const int			_execGrade;
 
 		void				checkGrade(void) const;
-
 };
 
 std::ostream	&operator<<(std::ostream &os, AForm const &c);

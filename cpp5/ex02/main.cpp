@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:53:44 by feberman          #+#    #+#             */
-/*   Updated: 2024/05/24 12:01:13 by feberman         ###   ########.fr       */
+/*   Updated: 2024/05/24 13:28:34 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,18 @@ int	main(void)
 	Bureaucrat	bob("Bob", 140);
 	ShrubberyCreationForm	form("test");
 	RobotomyRequestForm		form2("Max");
-	
-	freddy.executeForm(form);
-	bob.signForm(form);
-	freddy.signForm(form);
-	bob.executeForm(form);
-	freddy.executeForm(form);
-	freddy.signForm(form2);
-	freddy.executeForm(form2);
+	try
+	{
+		freddy.executeForm(form);
+		bob.signForm(form);
+		freddy.signForm(form);
+		bob.executeForm(form);
+		freddy.executeForm(form);
+		freddy.signForm(form2);
+		freddy.executeForm(form2);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }

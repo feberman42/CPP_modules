@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 11:44:19 by feberman          #+#    #+#             */
-/*   Updated: 2024/05/24 11:56:45 by feberman         ###   ########.fr       */
+/*   Updated: 2024/05/24 13:18:07 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ class RobotomyRequestForm: public AForm
 	private:
 		RobotomyRequestForm(void);
 		RobotomyRequestForm	&operator=(const RobotomyRequestForm &rhs);
-		const std::string	_target;
 		
 };
 

@@ -6,29 +6,32 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 11:46:41 by feberman          #+#    #+#             */
-/*   Updated: 2024/05/24 11:59:47 by feberman         ###   ########.fr       */
+/*   Updated: 2024/05/24 13:16:46 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(void):
-AForm("RobotomyRequest", 72, 45), _target("default")
+AForm("RobotomyRequest", 72, 45)
 {
+	this->_target = "default";
 	//std::cout << "RobotomyRequestForm was created" << std::endl;
 	return ;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target):
-AForm("RobotomyRequest", 72, 45), _target(target)
+AForm("RobotomyRequest", 72, 45)
 {
+	this->_target = target;
 	//std::cout << "RobotomyRequestForm was created" << std::endl;
 	return ;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &ref):
-AForm("RobotomyRequest", 72, 45), _target(ref._target)
+AForm("RobotomyRequest", 72, 45)
 {
+	this->_target = ref._target;
 	//std::cout << "RobotomyRequestForm was created with copy constructor" << std::endl;
 	*this = ref;
 	return ;
@@ -49,20 +52,7 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 
 void	RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
-	try
-	{
-		this->checkExecute(executor.getGrade());
-	}
-	catch (const AForm::FormNotSigned &e)
-	{
-		std::cerr << this->getName() << " with target: \"" << this->_target << "\" is not signed." << std::endl;
-		return ;
-	}
-	catch (const AForm::GradeTooLowException &e)
-	{
-		std::cerr << executor.getName() << "'s grade is too low to execute " << this->getName() << std::endl;
-		return ;
-	}
+	this->checkExecute(executor.getGrade());
 
 	std::cout << "* DRILLING NOISES *" << std::endl;
 	std::cout << "Robotomy of " << this->_target;

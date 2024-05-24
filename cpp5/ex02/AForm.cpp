@@ -51,6 +51,11 @@ const std::string	&AForm::getName(void) const
 	return (this->_name);
 }
 
+const std::string	&AForm::getTarget(void) const
+{
+	return (this->_target);
+}
+
 bool	AForm::getSigned(void) const
 {
 	return (this->_signed);
@@ -78,7 +83,7 @@ void	AForm::checkGrade(void) const
 void	AForm::checkExecute(int grade) const
 {
 	if (this->_signed == false)
-		throw (AForm::FormNotSigned());
+		throw (AForm::FormNotSigned(*this));
 	if (this->_execGrade < grade)
 		throw (AForm::GradeTooLowException());
 	return ;
@@ -91,6 +96,22 @@ void	AForm::beSigned(Bureaucrat &b)
 	else
 		throw (AForm::GradeTooLowException());
 	return ;
+}
+
+AForm::FormNotSigned::FormNotSigned(const AForm &form):
+_form(form)
+{
+	this->msg = std::string(this->_form.getName() + " with target: \"" + this->_form._target + "\" is not signed.");
+}
+
+AForm::FormNotSigned::~FormNotSigned(void) throw()
+{
+	return ;
+}
+
+const char	*AForm::FormNotSigned::what(void) const throw()
+{
+	return (this->msg.c_str());
 }
 
 std::ostream	&operator<<(std::ostream &os, AForm const &c)

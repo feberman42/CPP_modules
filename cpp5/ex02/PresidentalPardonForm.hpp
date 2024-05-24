@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentalPardonForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/24 10:45:00 by feberman          #+#    #+#             */
+/*   Created: 2024/05/24 12:42:01 by feberman          #+#    #+#             */
 /*   Updated: 2024/05/24 13:18:07 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef PRESIDENTALPARDONFORM_HPP
+# define PRESIDENTALPARDONFORM_HPP
 
 # include <iostream>
-# include <fstream>
 # include "AForm.hpp"
 
-class ShrubberyCreationForm: public AForm
+class PresidentalPardonForm: public AForm
 {
 	public:
-		ShrubberyCreationForm(const std::string &target);
-		ShrubberyCreationForm(const ShrubberyCreationForm &ref);
-		~ShrubberyCreationForm(void);
+		PresidentalPardonForm(const std::string &target);
+		PresidentalPardonForm(const PresidentalPardonForm &ref);
+		~PresidentalPardonForm(void);
 
-		void	execute(Bureaucrat const &executor) const;
+		void	execute(const Bureaucrat &executor) const;
 	private:
-		ShrubberyCreationForm(void);
-		ShrubberyCreationForm	&operator=(const ShrubberyCreationForm &rhs);
-		static void	putShrubbery(std::ofstream &file);
+		PresidentalPardonForm(void);
+		PresidentalPardonForm	&operator=(const PresidentalPardonForm &rhs);
 };
 
 #endif
