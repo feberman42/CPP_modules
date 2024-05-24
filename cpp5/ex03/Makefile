@@ -6,7 +6,7 @@
 #    By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:30:52 by feberman          #+#    #+#              #
-#    Updated: 2024/05/24 21:52:50 by feberman         ###   ########.fr        #
+#    Updated: 2024/05/24 21:52:32 by feberman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ SHELL= 		/bin/bash
 OBJD=		objects/
 
 SRCs= 		main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
-			RobotomyRequestForm.cpp PresidentalPardonForm.cpp
+			RobotomyRequestForm.cpp PresidentalPardonForm.cpp Intern.cpp
 HEADERS=	Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp \
-			RobotomyRequestForm.hpp PresidentalPardonForm.hpp
+			RobotomyRequestForm.hpp PresidentalPardonForm.hpp Intern.hpp
 OBJs=		$(addprefix $(OBJD), $(SRCs:.cpp=.o))
 
 all: $(NAME)
