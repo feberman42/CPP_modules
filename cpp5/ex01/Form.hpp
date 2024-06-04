@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 16:56:32 by feberman          #+#    #+#             */
-/*   Updated: 2024/05/23 18:10:38 by feberman         ###   ########.fr       */
+/*   Updated: 2024/06/04 09:29:31 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class Form
 
 		void				checkGrade(void) const;
 
-		class GradeTooHightException: public std::exception {};
+		class GradeTooHighException: public std::exception {};
 		class GradeTooLowException: public std::exception {};
 };
 

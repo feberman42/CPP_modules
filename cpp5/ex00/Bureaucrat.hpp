@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:23:54 by feberman          #+#    #+#             */
-/*   Updated: 2024/05/23 13:42:42 by feberman         ###   ########.fr       */
+/*   Updated: 2024/06/04 09:29:31 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Bureaucrat
 		int					_grade;
 		void				checkGrade(void);
 
-		class GradeTooHightException: public std::exception
+		class GradeTooHighException: public std::exception
 		{
 			public:
 				virtual const char	*what(void) const throw();

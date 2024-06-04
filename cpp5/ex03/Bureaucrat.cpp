@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:30:20 by feberman          #+#    #+#             */
-/*   Updated: 2024/05/24 21:53:42 by feberman         ###   ########.fr       */
+/*   Updated: 2024/06/04 09:29:31 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void Bureaucrat::executeForm(const AForm &f) const
 void	Bureaucrat::checkGrade(void)
 {
 	if (this->_grade < 1)
-		throw Bureaucrat::GradeTooHightException();
+		throw Bureaucrat::GradeTooHighException();
 	else if (this->_grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 	return ;
@@ -101,7 +101,7 @@ std::ostream	&operator<<(std::ostream &os, Bureaucrat const &c)
 	return (os);
 }
 
-const char	*Bureaucrat::GradeTooHightException::what(void) const throw()
+const char	*Bureaucrat::GradeTooHighException::what(void) const throw()
 {
 	return ("Grade of bureaucrat was raised above 1.");
 }

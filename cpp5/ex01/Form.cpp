@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:05:52 by feberman          #+#    #+#             */
-/*   Updated: 2024/05/23 18:10:49 by feberman         ###   ########.fr       */
+/*   Updated: 2024/06/04 09:29:31 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	Form::getExecGrade(void) const
 void	Form::checkGrade(void) const
 {
 	if (this->_execGrade < 1 || this->_signGrade < 1)
-		throw (Form::GradeTooHightException());
+		throw (Form::GradeTooHighException());
 	if (this->_execGrade > 150 || this->_signGrade > 150)
 		throw (Form::GradeTooLowException());
 	return ;

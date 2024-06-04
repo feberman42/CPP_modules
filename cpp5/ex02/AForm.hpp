@@ -38,8 +38,16 @@ class AForm
 		std::string			_target;
 		void				checkExecute(int grade) const;
 
-		class GradeTooHightException: public std::exception {};
-		class GradeTooLowException: public std::exception {};
+		class GradeTooHighException: public std::exception
+		{
+			const char	*what(void) const throw();
+		};
+
+		class GradeTooLowException: public std::exception
+		{
+			const char	*what(void) const throw();
+		};
+
 		class FormNotSigned: public std::exception
 		{
 			public:
