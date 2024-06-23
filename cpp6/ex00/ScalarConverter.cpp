@@ -6,11 +6,12 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 11:06:50 by feberman          #+#    #+#             */
-/*   Updated: 2024/06/20 15:52:28 by feberman         ###   ########.fr       */
+/*   Updated: 2024/06/23 19:04:28 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+#include <cstdlib>
 
 static bool	handlePseudoLiterals(const std::string &input)
 {
@@ -35,8 +36,23 @@ static bool	handlePseudoLiterals(const std::string &input)
 
 static bool	handleInt(const std::string &input)
 {
-	std::cout << "int conversion not implemented yest for: " << input << std::endl;
-	return (false);
+	for (long unsigned int i = 0; i < input.length(); i++)
+	{
+		if (i == 0 && (input[i] == '+' || input[i] == '-'))
+			continue ;
+		if (std::isdigit(input[i]) == 0)
+			return (false);
+	}
+
+	int	num = std::atoi(input.c_str());
+	if (num > 255 || num < 0 || std::isprint(num) == 0)
+		std::cout << "char: impossible" << std::endl;
+	else
+		std::cout << "char: '" << static_cast<char>(num) << "'" << std::endl;
+	std::cout << "int: " << num << std::endl;
+	std::cout << std::fixed << std::setprecision(1) << "float: " << static_cast<float>(num) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(num) << std::endl;
+	return (true);
 }
 
 static bool	handleChar(const std::string &input)
@@ -60,6 +76,9 @@ void	ScalarConverter::convert(const std::string &input)
 		return ;
 	
 	if (handleChar(input))
+		return ;
+
+	if (handleInt(input))
 		return ;
 
 	std::cerr << "Literal: '" << input << "' not recognised." << std::endl;
