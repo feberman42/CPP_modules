@@ -6,12 +6,14 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 11:06:50 by feberman          #+#    #+#             */
-/*   Updated: 2024/06/23 19:04:28 by feberman         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:03:32 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <cstdlib>
+#include <limits>
+#include <errno.h>
 
 static bool	handlePseudoLiterals(const std::string &input)
 {
@@ -44,7 +46,18 @@ static bool	handleInt(const std::string &input)
 			return (false);
 	}
 
-	int	num = std::atoi(input.c_str());
+	long	num = std::strtol(input.c_str(), NULL, 10);
+	if (num > std::numeric_limits<int>::max())
+	{
+		std::cerr << "Literal is too big for an integer." << std::endl;
+		return (true);
+	}
+	else if (num < std::numeric_limits<int>::min())
+	{
+		std::cerr << "Literal is too small for an integer." << std::endl;
+		return (true);
+	}
+	
 	if (num > 255 || num < 0 || std::isprint(num) == 0)
 		std::cout << "char: impossible" << std::endl;
 	else
@@ -70,6 +83,46 @@ static bool	handleChar(const std::string &input)
 	return (true);
 }
 
+static bool	handleDouble(const std::string &input)
+{
+	for (long unsigned int i = 0; i < input.length(); i++)
+	{
+		if (i == 0 && (input[i] == '+' || input[i] == '-'))
+			continue ;
+		if (std::isdigit(input[i]) == 0 && input[i] != '.')
+			return (false);
+	}
+	if (input.find_first_of('.') != input.find_last_of('.') || input.find_first_of('.') == std::string::npos)
+		return (false);
+	
+	long double	num = std::strtold(input.c_str(), NULL);
+	if (num > std::numeric_limits<double>::max())
+	{
+		std::cerr << "Literal is too big for a double." << std::endl;
+		return (true);
+	}
+	else if (num < -1 * std::numeric_limits<double>::max())
+	{
+		std::cerr << "Literal is too small for a double." << std::endl;
+		return (true);
+	}
+
+	if (num > 255 || num < 0 || std::isprint(num) == 0)
+		std::cout << "char: impossible" << std::endl;
+	else
+		std::cout << "char: '" << static_cast<char>(num) << "'" << std::endl;
+	if (num > std::numeric_limits<int>::max() || num < std::numeric_limits<int>::min())
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(num) << std::endl;
+	if (num > std::numeric_limits<float>::max() || num < -1 * std::numeric_limits<float>::max())
+		std::cout << "float: impossible" << std::endl;
+	else
+		std::cout << std::fixed << std::setprecision(1) << "float: " << static_cast<float>(num) << "f" << std::endl;
+	std::cout << std::fixed << std::setprecision(1) << "double: " << num << std::endl;
+	return (true);
+}
+
 void	ScalarConverter::convert(const std::string &input)
 {
 	if (handlePseudoLiterals(input))
@@ -79,6 +132,9 @@ void	ScalarConverter::convert(const std::string &input)
 		return ;
 
 	if (handleInt(input))
+		return ;
+
+	if (handleDouble(input))
 		return ;
 
 	std::cerr << "Literal: '" << input << "' not recognised." << std::endl;
