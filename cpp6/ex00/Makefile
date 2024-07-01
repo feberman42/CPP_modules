@@ -6,13 +6,13 @@
 #    By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:30:52 by feberman          #+#    #+#              #
-#    Updated: 2024/06/20 11:24:47 by feberman         ###   ########.fr        #
+#    Updated: 2024/06/26 15:43:53 by feberman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=		convert
 CPP=		c++
-CPPFLAGS=	-Wall -Werror -Wextra -Wshadow -std=c++98
+CPPFLAGS=	-Wall -Werror -Wextra -std=c++98
 SHELL= 		/bin/bash
 
 OBJD=		objects/
