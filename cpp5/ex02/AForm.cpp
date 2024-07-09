@@ -74,7 +74,7 @@ int	AForm::getExecGrade(void) const
 void	AForm::checkGrade(void) const
 {
 	if (this->_execGrade < 1 || this->_signGrade < 1)
-		throw (AForm::GradeTooHightException());
+		throw (AForm::GradeTooHighException());
 	if (this->_execGrade > 150 || this->_signGrade > 150)
 		throw (AForm::GradeTooLowException());
 	return ;
@@ -96,6 +96,16 @@ void	AForm::beSigned(Bureaucrat &b)
 	else
 		throw (AForm::GradeTooLowException());
 	return ;
+}
+
+const char	*AForm::GradeTooHighException::what(void) const throw()
+{
+	return ("Grade too high.");
+}
+
+const char	*AForm::GradeTooLowException::what(void) const throw()
+{
+	return ("Grade too low.");
 }
 
 AForm::FormNotSigned::FormNotSigned(const AForm &form):

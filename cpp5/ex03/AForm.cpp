@@ -74,7 +74,7 @@ int	AForm::getExecGrade(void) const
 void	AForm::checkGrade(void) const
 {
 	if (this->_execGrade < 1 || this->_signGrade < 1)
-		throw (AForm::GradeTooHightException());
+		throw (AForm::GradeTooHighException());
 	if (this->_execGrade > 150 || this->_signGrade > 150)
 		throw (AForm::GradeTooLowException());
 	return ;

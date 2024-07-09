@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 21:00:30 by feberman          #+#    #+#             */
-/*   Updated: 2024/05/24 21:54:01 by feberman         ###   ########.fr       */
+/*   Updated: 2024/06/04 09:20:50 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ AForm	*Intern::makeForm(const std::string &name, const std::string &target) cons
 	AForm *(*funcs[3])(const std::string &target) = {&newShrubbery, &newRobotomy, &newPresidentalPardon};
 	const char	*names[3] = {"shrubbery", "robotomy request", "presidental pardon"};
 
-	for (int i; i < 3; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		if (names[i] == name)
 		{
