@@ -3,10 +3,12 @@
 #include "Array.hpp"
 
 #define MAX_VAL 750
-int main(int, char**)
+
+int main(void)
 {
-	Array<int> numbers(MAX_VAL);
-	int* mirror = new int[MAX_VAL];
+	Array<int>	numbers(MAX_VAL);
+	int*		mirror = new int[MAX_VAL];
+
 	srand(time(NULL));
 	for (int i = 0; i < MAX_VAL; i++)
 	{
@@ -24,8 +26,9 @@ int main(int, char**)
 	}
 	//SCOPE
 	{
-		Array<int> tmp = numbers;
-		Array<int> test(tmp);
+		Array<int>	tmp = numbers;
+		Array<int>	test(tmp);
+
 		tmp[2] = 0;
 		test[2] = 5;
 		std::cout << "orig: " << tmp[2] << std::endl;
@@ -40,6 +43,7 @@ int main(int, char**)
 	{
 		std::cerr << e.what() << '\n';
 	}
+
 	try
 	{
 		numbers[MAX_VAL] = 0;
@@ -53,6 +57,6 @@ int main(int, char**)
 	{
 		numbers[i] = rand();
 	}
-	delete [] mirror;//
+	delete [] mirror;
 	return 0;
 }
