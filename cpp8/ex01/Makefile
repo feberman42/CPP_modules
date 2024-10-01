@@ -6,7 +6,7 @@
 #    By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/12 14:30:52 by feberman          #+#    #+#              #
-#    Updated: 2024/07/14 18:24:23 by feberman         ###   ########.fr        #
+#    Updated: 2024/09/18 16:50:57 by feberman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ SHELL= 		/bin/bash
 
 OBJD=		objects/
 
-SRCs= 		main.cpp span.cpp
-HEADERS=	span.hpp
+SRCs= 		main.cpp Span.cpp
+HEADERS=	Span.hpp
 OBJs=		$(addprefix $(OBJD), $(SRCs:.cpp=.o))
 
 all: $(NAME)

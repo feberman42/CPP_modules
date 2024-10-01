@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 18:25:38 by feberman          #+#    #+#             */
-/*   Updated: 2024/07/14 19:14:24 by feberman         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:08:54 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SPAN_HPP
 
 # include <iostream>
+# include <vector>
 
 class Span
 {
@@ -23,13 +24,17 @@ class Span
 		Span	&operator=(const Span &rhs);
 		~Span(void);
 
-		void	addNumber(int num);
-		unsigned int	shortestSpan(void) const;
-		unsigned int	longestSpan(void) const;
+		void				addNumber(int num);
+		unsigned int		shortestSpan(void) const;
+		unsigned int		longestSpan(void) const;
+		unsigned int		getSize(void) const;
+		std::vector<int>	&getNums(void) const;
 
 	private:
 		Span(void);
-		
+
+		std::vector<int>	_nums;
+		unsigned int		_size;
 };
 
 std::ostream	&operator<<(std::ostream &os, Span const &c);
