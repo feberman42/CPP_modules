@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:35:38 by feberman          #+#    #+#             */
-/*   Updated: 2024/06/26 15:06:28 by feberman         ###   ########.fr       */
+/*   Updated: 2024/10/01 11:38:25 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,43 @@ void	identify(Base *p)
 	return ;
 }
 
+void identify(Base& p)
+{
+	try
+	{
+		A	&a_test = dynamic_cast<A &>(p);
+		std::cout << "A" << std::endl;
+		(void)a_test;
+		return ;
+	}
+	catch(const std::exception& e) {}
+
+	try
+	{
+		B	&b_test = dynamic_cast<B &>(p);
+		std::cout << "B" << std::endl;
+		(void)b_test;
+		return ;
+	}
+	catch(const std::exception& e) {}
+	
+	try
+	{
+		C	&c_test = dynamic_cast<C &>(p);
+		std::cout << "C" << std::endl;
+		(void)c_test;
+		return ;
+	}
+	catch(const std::exception& e) {}
+}
+
 int main(void)
 {
 	Base	*ptr = NULL;
 
 	ptr = generate();
 	identify(ptr);
+	identify(*ptr);
 	if (ptr != NULL)
 		delete (ptr);
 	return (0);
