@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 17:16:11 by feberman          #+#    #+#             */
-/*   Updated: 2024/09/18 16:53:45 by feberman         ###   ########.fr       */
+/*   Updated: 2024/10/05 13:04:24 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Span	&Span::operator=(const Span &rhs)
 	this->_nums.clear();
 	for (size_t i = 0; i < rhs._nums.size(); ++i)
 	{
-		_nums.push_back(rhs._nums[i]);
+		this->addNumber(rhs._nums[i]);
 	}
 	return *this;
 }
@@ -49,22 +49,39 @@ std::vector<int>	&Span::getNums(void) const { return (const_cast<std::vector<int
 
 void	Span::addNumber(int num)
 {
+	std::vector<int>::iterator	it;
+
 	if (_nums.size() >= _size)
-		throw std::exception();
+		throw Span::SizeException();
 	
-	_nums.push_back(num);
+	it = std::lower_bound(_nums.begin(), _nums.end(), num);
+	_nums.insert(it, num);
 }
 
 unsigned int	Span::shortestSpan(void) const
 {
-	// NEED TO IMPLEMENT
-	return (0);
+	unsigned int	shortest;
+
+	if (_nums.size() < 2)
+		throw Span::SpanException();
+	
+	shortest = _nums[1] - _nums[0];
+	for (unsigned int i = 1; i < _nums.size(); ++i)
+	{
+		if (shortest > static_cast<unsigned int>(_nums[i] - _nums[i - 1]))
+			shortest = _nums[i] - _nums[i - 1];
+		if (shortest == 0)
+			break ;
+	}
+	return (shortest);
 }
 
 unsigned int	Span::longestSpan(void) const
 {
-	// NEED TO IMPLEMENT
-	return (0);
+	if (_nums.size() < 2)
+		throw Span::SpanException();
+
+	return (_nums[_nums.size() - 1] - _nums[0]);
 }
 
 std::ostream	&operator<<(std::ostream &os, Span const &c)
@@ -74,12 +91,23 @@ std::ostream	&operator<<(std::ostream &os, Span const &c)
 	os << "Span of size: " << c.getSize() << std::endl;
 	for (unsigned int i = 0; i < nums.size(); ++i)
 	{
-		os << nums[i];
+		os << std::setw(3) << nums[i];
 		if (i % 10 == 9)
 			os << std::endl;
 		else
 			os << " ";
 	}
-	os << std::endl;
+	if (c.getSize() % 10 != 0)
+		std::cout << std::endl;
 	return (os);
+}
+
+const char	*Span::SizeException::what(void) const throw()
+{
+	return ("Span cannot take more numbers. Size attribute exceded.");
+}
+
+const char	*Span::SpanException::what(void) const throw()
+{
+	return ("Not enough valuies to calculate span.");
 }
