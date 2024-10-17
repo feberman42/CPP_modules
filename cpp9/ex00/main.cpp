@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:38:37 by feberman          #+#    #+#             */
-/*   Updated: 2024/10/11 16:57:14 by feberman         ###   ########.fr       */
+/*   Updated: 2024/10/17 21:43:45 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	main(int argc, char *argv[])
 {
-	if (argc != 2)
-		return (1);
-	BitcoinExchange	btc(argv[1]);
+	BitcoinExchange	btc;
+	
+	(void)argc;
+	btc.calculate(argv[1]);
 }

@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:43:28 by feberman          #+#    #+#             */
-/*   Updated: 2024/10/11 17:34:57 by feberman         ###   ########.fr       */
+/*   Updated: 2024/10/17 21:48:15 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,18 @@
 class BitcoinExchange
 {
 	public:
-		BitcoinExchange(const char *path);
+		BitcoinExchange(void);
 		BitcoinExchange(const BitcoinExchange &ref);
 		BitcoinExchange	&operator=(const BitcoinExchange &rhs);
 		~BitcoinExchange(void);
 
+		void	calculate(const char *path) const;
+
 	private:
-		BitcoinExchange(void);
+		bool	loadFile(const char *path);
+		void	dbLookup(std::string &line) const;
+		
 		std::map<std::string, float>	_data;
-
-		class InvalidInputData: public std::exception
-		{
-			const char	*what(void) const throw();
-		};
 };
-
-std::ostream	&operator<<(std::ostream &os, BitcoinExchange const &c);
 
 #endif
