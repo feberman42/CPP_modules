@@ -15,10 +15,11 @@
 #include <cstdlib>
 #include <iostream>
 #include "pmergeMe.h"
+#include <iterator>
 
-static void	createlist(int argc, char *argv[], std::list<int> &_list);
-static void	printlist(std::list<int> &_list, const char *prefix);
-static void	sortlistRec(std::list<int> &_list);
+static void	createList(int argc, char *argv[], std::list<int> &_list);
+static void	printList(std::list<int> &_list, const char *prefix);
+static void	sortListRec(std::list<int> &_list);
 static void	binaryInsert(std::list<int> &_list, std::list<std::pair<int, int> > &pairs);
 static std::list<std::pair<int, int> >::iterator	findPairValue(std::list<std::pair<int, int> > &pairs, int value);
 static void	createPairs(std::list<int> &_list, std::list<std::pair<int, int> > &pairs);
@@ -26,19 +27,19 @@ static void	calculateJacobsSteps(std::list<int> &_list, std::list<int> &steps);
 static void	buildInsertionOrder(std::list<int> &_list, \
 	std::list<std::pair<int, int> > &pairs, std::list<std::pair<int, int> > &insertPairs);
 
-void	sortlist(int argc, char *argv[], bool print)
+void	sortList(int argc, char *argv[], bool print)
 {
 	std::list<int>	_list;
 
-	createlist(argc, argv, _list);
+	createList(argc, argv, _list);
 	if (print)
-		printlist(_list, "Before:\t");
-	sortlistRec(_list);
+		printList(_list, "Before:\t");
+	sortListRec(_list);
 	if (print)
-		printlist(_list, "After:\t");
+		printList(_list, "After:\t");
 }
 
-static void	printlist(std::list<int> &_list, const char *prefix)
+static void	printList(std::list<int> &_list, const char *prefix)
 {
 	std::cout << prefix;
 	for (std::list<int>::iterator it = _list.begin(); it != _list.end(); ++it)
@@ -46,7 +47,7 @@ static void	printlist(std::list<int> &_list, const char *prefix)
 	std::cout << std::endl;
 }
 
-static void	sortlistRec(std::list<int> &_list)
+static void	sortListRec(std::list<int> &_list)
 {
 	std::list<std::pair<int, int> >	pairs;
 	
@@ -61,7 +62,7 @@ static void	sortlistRec(std::list<int> &_list)
 	// for (std::list<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); ++it)
 	// 	std::cout << "<" << it->first << " " << it->second << ">" << std::endl;
 	// std::cout << std::endl;
-	sortlistRec(_list);
+	sortListRec(_list);
 	binaryInsert(_list, pairs);
 	return ;
 
@@ -72,6 +73,10 @@ static void	createPairs(std::list<int> &_list, std::list<std::pair<int, int> > &
 	int			swp;
 	std::size_t	i = 0;
 	std::size_t	size = _list.size();
+	std::list<int>::iterator	itf = _list.begin();
+	std::list<int>::iterator	itb = itf;
+
+	std::advance(itb, size / 2);
 
 	if (size % 2 == 1)
 	{
@@ -81,14 +86,16 @@ static void	createPairs(std::list<int> &_list, std::list<std::pair<int, int> > &
 	}
 	while (i < size / 2)
 	{
-		if (_list[i] < _list[i + (size / 2)])
+		if (*itf < *itb)
 		{
-			swp = _list[i];
-			_list[i] = _list[i + (size / 2)];
-			_list[i + (size / 2)] = swp;
+			swp = *itf;
+			*itf = *itb;
+			*itb = swp;
 		}
-		pairs.push_back(std::pair<int, int>(_list[i], _list[i + (size / 2)]));
+		pairs.push_back(std::pair<int, int>(*itf, *itb));
 		++i;
+		std::advance(itf, 1);
+		std::advance(itb, 1);
 	}
 	i = size / 2;
 	while (i++ < size)
@@ -145,8 +152,9 @@ static void	buildInsertionOrder(std::list<int> &_list, \
 
 static void	calculateJacobsSteps(std::list<int> &_list, std::list<int> &steps)
 {
-	std::size_t	jacob;
-	int			i = 3;
+	std::size_t					jacob;
+	int							i = 3;
+	std::list<int>::iterator	it;
 
 	while (true)
 	{
@@ -156,7 +164,9 @@ static void	calculateJacobsSteps(std::list<int> &_list, std::list<int> &steps)
 			steps.push_back(_list.back());
 			break ;
 		}
-		steps.push_back(_list[jacob - 1]);
+		it = _list.begin();
+		std::advance(it, jacob);
+		steps.push_back(*it);
 	}
 }
 
@@ -170,7 +180,7 @@ static std::list<std::pair<int, int> >::iterator	findPairValue(std::list<std::pa
 	return (pairs.end());
 }
 
-static void	createlist(int argc, char *argv[], std::list<int> &_list)
+static void	createList(int argc, char *argv[], std::list<int> &_list)
 {
 	int	i;
 
