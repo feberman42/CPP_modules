@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 21:34:55 by feberman          #+#    #+#             */
-/*   Updated: 2024/11/29 10:35:09 by feberman         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:05:55 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,17 @@ int	main(int argc, char *argv[])
 	double			listTime;
 
 	if (validate_input(argc, argv) == false)
-		return (1); 
+		return (1);
+
 	vecStart = std::clock();
 	sortVector(argc, argv, true);
 	vecEnd = std::clock();
 	vecTime = static_cast<double>(vecEnd - vecStart) / CLOCKS_PER_SEC * 1000;
+	std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector:\t" << vecTime << " ms" << std::endl;
+
 	listStart = std::clock();
-	sortVector(argc, argv, true);
+	sortList(argc, argv, true);
 	listEnd = std::clock();
 	listTime = static_cast<double>(listEnd - listStart) / CLOCKS_PER_SEC * 1000;
-	std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector:\t" << vecTime << " ms" << std::endl;
 	std::cout << "Time to process a range of " << argc - 1 << " elements with std::list:\t" << listTime << " ms" << std::endl;
 }

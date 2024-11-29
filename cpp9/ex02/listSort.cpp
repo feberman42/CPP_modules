@@ -33,10 +33,10 @@ void	sortList(int argc, char *argv[], bool print)
 
 	createList(argc, argv, _list);
 	if (print)
-		printList(_list, "Before:\t");
+		printList(_list, "List before:\t");
 	sortListRec(_list);
 	if (print)
-		printList(_list, "After:\t");
+		printList(_list, "List after:\t");
 }
 
 static void	printList(std::list<int> &_list, const char *prefix)

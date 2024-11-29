@@ -6,7 +6,7 @@
 /*   By: feberman <feberman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:31:30 by feberman          #+#    #+#             */
-/*   Updated: 2024/11/28 19:08:30 by feberman         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:00:12 by feberman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	sortVector(int argc, char *argv[], bool print)
 
 	createVector(argc, argv, vec);
 	if (print)
-		printVector(vec, "Before:\t");
+		printVector(vec, "Vector before:\t");
 	sortVectorRec(vec);
 	if (print)
-		printVector(vec, "After:\t");
+		printVector(vec, "Vector after:\t");
 }
 
 static void	printVector(std::vector<int> &vec, const char *prefix)
