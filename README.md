@@ -10,4 +10,12 @@
   
 <b>CPP4:</b> Subtype polymorphism, abstract classes, interfaces  
 
-<b>CPP5:</b> Exceptions  
+<b>CPP5:</b> Exceptions
+
+<b>CPP6:</b> Type Casting
+
+<b>CPP7:</b> Function & Class Templates
+
+<b>CPP8:</b> Templated containers, iterators, algorithms
+
+<b>CPP9:</b> Using STL (Database, Reverse Polish Notation Parser, Merge-Insertion-Sort/Ford-Johnson)
